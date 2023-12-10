@@ -4,20 +4,21 @@ phases:
   install:
     runtime-versions:
       java: corretto11
-      # Gradle 버전을 여기에 명시
-      gradle: 7.4.1
     commands:
-      - echo Installing dependencies...
+      - echo "Installing dependencies or performing pre-build tasks"
+
   pre_build:
     commands:
-      - echo Nothing to do in the pre_build phase
+      - echo "Run pre-build tasks if needed"
+
   build:
     commands:
-      - echo Build Starting on `date`
-      - chmod +x ./gradlew
-      # Gradle Wrapper를 사용하여 빌드
       - ./gradlew build
+
   post_build:
     commands:
-      - echo $(basename ./build/libs/*.jar)
-      - pwd
+      - echo "Run post-build tasks if needed"
+
+artifacts:
+  files: '**/*'
+  base-directory: 'build/libs'
