@@ -36,7 +36,7 @@ public class RentService {
 
         // 사용자가 있으면 대출 가능한 책 조회
         if (user != null) {
-            BookDTO availableBook = bookService."egetAvailableBook();
+            BookDTO availableBook = bookService.getAvailableBook();
 
             if (availableBook != null) {
                 // 책 상태를 true로 변경
