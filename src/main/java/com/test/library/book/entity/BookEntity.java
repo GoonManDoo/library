@@ -24,8 +24,8 @@ public class BookEntity {
     private String bookWriter;
 
     /* 대출 상태 */
-    @Column(length = 1, columnDefinition = "varchar (1) default 'N'")
-    private String bookState;
+    @Column(name = "book_state", nullable = false)
+    private boolean bookState = false; // 기본값을 false로 설정
 
     /* 기본 생성자 추가 */
     public BookEntity() {
@@ -37,7 +37,7 @@ public class BookEntity {
     }
 
     @Builder
-    public BookEntity(Long bookUid, String bookName, String bookWriter, String bookState) {
+    public BookEntity(Long bookUid, String bookName, String bookWriter, boolean bookState) {
         this.bookUid = bookUid;
         this.bookName = bookName;
         this.bookWriter = bookWriter;

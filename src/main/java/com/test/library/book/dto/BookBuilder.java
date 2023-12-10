@@ -9,7 +9,7 @@ public class BookBuilder {
                 .bookUid(bookDTO.getBookUid())
                 .bookName(bookDTO.getBookName())
                 .bookWriter(bookDTO.getBookWriter())
-                .bookState(bookDTO.getBookState())
+                //.bookState(bookDTO.getBookState())
                 .build();
     }
 

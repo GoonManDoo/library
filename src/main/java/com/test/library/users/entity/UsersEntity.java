@@ -27,10 +27,6 @@ public class UsersEntity {
     @Column(length = 40, nullable = false)
     private String usersPw;
 
-    /* 대출현황 */
-    @Column(nullable = false, columnDefinition = "int default 0")
-    private int usersState;
-
     /* 기본 생성자 추가 */
     public UsersEntity() {
     }
@@ -41,12 +37,11 @@ public class UsersEntity {
     }
 
     @Builder
-    public UsersEntity(Long usersUid, String usersName, String usersId, String usersPw, int usersState) {
+    public UsersEntity(Long usersUid, String usersName, String usersId, String usersPw) {
         this.usersUid = usersUid;
         this.usersName = usersName;
         this.usersId = usersId;
         this.usersPw = usersPw;
-        this.usersState = usersState;
     }
 
 }

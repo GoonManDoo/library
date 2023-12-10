@@ -69,4 +69,37 @@ public class BookService {
         bookRepository.delete(bookEntity);
     }
 
+    /* 책 대출 상태 업데이트 */
+    public void updateBookState(Long bookUid, boolean bookState) {
+        // 책 고유번호로 책 조회
+        BookEntity bookEntity = bookRepository.findById(bookUid).orElse(null);
+
+        if (bookEntity != null) {
+            // 책 대출 상태 업데이트
+            bookEntity.setBookState(bookState);
+            // 업데이트된 책 저장
+            bookRepository.save(bookEntity);
+        }
+    }
+
+    /* 대출 가능한 도서를 가져옴 */
+    public BookDTO getAvailableBook() {
+        // 대출 가능한 도서 조회
+        List<BookEntity> availableBooks = bookRepository.findByBookState(false);
+
+        if (!availableBooks.isEmpty()) {
+            // 대출 가능한 도서 중 첫번째 도서를 가져옴
+            BookEntity availableBookEntity = availableBooks.get(0);
+            // 도서 상태를 true로 변경
+            availableBookEntity.setBookState(true);
+
+            availableBookEntity = bookRepository.save(availableBookEntity);
+
+            // Entity를 DTO로 변환
+            return BookDTO.toDTO(availableBookEntity);
+        }
+        // 대출 가능한 도서가 없을 경우 null 반환
+        return null;
+    }
+
 }

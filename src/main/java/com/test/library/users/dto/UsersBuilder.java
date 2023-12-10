@@ -11,7 +11,6 @@ public class UsersBuilder {
                 .usersName(usersDTO.getUsersName())
                 .usersId(usersDTO.getUsersId())
                 .usersPw(usersDTO.getUsersPw())
-                .usersState(usersDTO.getUsersState())
                 .build();
     }
 

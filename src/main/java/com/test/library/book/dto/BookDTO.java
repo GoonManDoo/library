@@ -10,14 +10,14 @@ public class BookDTO {
     private Long bookUid; // 책 고유번호
     private String bookName; // 책 이름
     private String bookWriter; // 책 저자
-    private String bookState; // 대출 상태
+    private boolean bookState; // 대출 상태
 
     public BookDTO() {
 
     }
 
     // 생성자
-    public BookDTO(Long bookUid, String bookName, String bookWriter, String bookState) {
+    public BookDTO(Long bookUid, String bookName, String bookWriter, boolean bookState) {
         this.bookUid = bookUid;
         this.bookName = bookName;
         this.bookWriter = bookWriter;
@@ -30,8 +30,10 @@ public class BookDTO {
         dto.setBookUid(entity.getBookUid());
         dto.setBookName(entity.getBookName());
         dto.setBookWriter(entity.getBookWriter());
-        dto.setBookState(entity.getBookState());
+        //dto.setBookState(entity.getBookState());
         return dto;
     }
+
+    // 대출 가능 여부를 판단하는 메소드
 
 }
