@@ -33,7 +33,9 @@ phases:
             && update-alternatives --install /usr/bin/$tool $tool $tool_path 20000;
           fi;
         done
-
+  pre_build:
+    commands:
+      - chmod +x gradlew
   build:
     commands:
       - ./gradlew build
@@ -45,3 +47,4 @@ phases:
 artifacts:
   files: '**/*'
   base-directory: 'build/libs'
+  discard-paths: yes
