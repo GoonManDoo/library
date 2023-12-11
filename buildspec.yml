@@ -4,7 +4,6 @@ phases:
   install:
     runtime-versions:
       java: corretto11
-    run-as: root
     commands:
       - export JAVA_17_HOME="/usr/lib/jvm/java-17-amazon-corretto.x86_64"
       - export JDK_17_HOME="/usr/lib/jvm/java-17-amazon-corretto.x86_64"
@@ -12,6 +11,8 @@ phases:
       - export JAVA_HOME="$JAVA_17_HOME"
       - export JRE_HOME="$JRE_17_HOME"
       - export JDK_HOME="$JDK_17_HOME"
+      - export JAVA_HOME=$CODEBUILD_AGENT_JAVA_HOME
+      - echo "JAVA_HOME set to $JAVA_HOME"
       - |-
         export GNUPGHOME="$(mktemp -d)" \
             && curl -fL -o corretto.key https://yum.corretto.aws/corretto.key \
@@ -39,10 +40,6 @@ phases:
   build:
     commands:
       - ./gradlew build
-
-  post_build:
-    commands:
-      - echo "Run post-build tasks if needed"
 
 artifacts:
   files: '**/*'
