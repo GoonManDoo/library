@@ -27,7 +27,7 @@ phases:
             && yum install -y fontconfig
       - |-
         for tool_path in "$JAVA_HOME"/bin/*;
-         do tool=`basename "$tool_path"`;
+         do tool=$(basename "$tool_path");
           if [ $tool != 'java-rmi.cgi' ];
           then
            rm -f /usr/bin/$tool /var/lib/alternatives/$tool \
