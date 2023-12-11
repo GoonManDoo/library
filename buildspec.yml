@@ -1,7 +1,10 @@
+# AWS CodeBuild 빌드 버전
 version: 0.2
 
 phases:
+  # 빌드 환경 설정
   install:
+    # 사용할 Java 런타임 버전[17 지원이 안됨으로 커맨드로 java 17 설치]
     runtime-versions:
       java: corretto11
     commands:
@@ -26,6 +29,7 @@ phases:
             && (find /usr/lib/jvm/java-17-amazon-corretto.x86_64 -name src.zip -delete || true) \
             && yum install -y fontconfig
       - |-
+#       java 실행 파일에 대한 심볼릭 설정
         for tool_path in "$JAVA_HOME"/bin/*;
          do tool=$(basename "$tool_path");
           if [ $tool != 'java-rmi.cgi' ];
@@ -34,14 +38,19 @@ phases:
             && update-alternatives --install /usr/bin/$tool $tool $tool_path 20000;
           fi;
         done
+# 빌드 전 실행할 명령어
   pre_build:
     commands:
+# gradlew 실행 권한 부여
       - chmod +x gradlew
   build:
     commands:
+# gradlew을 사용하여 프로젝트 빌드
       - ./gradlew build
-
+# 빌드 후 생성된 파일 처리
 artifacts:
+# 빌드된 파일의 경로를 지정
   files: '**/*'
+# 파일의 기본 디렉토리 지정
   base-directory: 'build/libs'
   discard-paths: yes

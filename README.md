@@ -1,9 +1,10 @@
 # Library
 
 ## 🙋‍♀️소개
->도서관리 시스템
+>도서관리 시스템<br>
+> [산출물 : src/output](https://github.com/GoonManDoo/library/tree/master/src/output)
 
->## 🛠기술 스택
+## 🛠기술 스택
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
 ![JPA](https://img.shields.io/badge/-JPA-%2397CA00?style=for-the-badge&logo=java&logoColor=white)
