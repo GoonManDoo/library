@@ -23,13 +23,15 @@ phases:
       - yum install -y java-17-amazon-corretto-devel
       - (find /usr/lib/jvm/java-17-amazon-corretto.x86_64 -name src.zip -delete || true)
       - yum install -y fontconfig
-      - for tool_path in "$JAVA_HOME"/bin/*; do \
-          tool=$(basename "$tool_path"); \
-          if [ "$tool" != 'java-rmi.cgi' ]; then \
-            rm -f /usr/bin/$tool /var/lib/alternatives/$tool && \
-            update-alternatives --install /usr/bin/$tool $tool $tool_path 20000; \
-          fi; \
+      - for tool_path in "$JAVA_HOME"/bin/*;
+         do tool=`basename "$tool_path"`;
+          if [ $tool != 'java-rmi.cgi' ];
+          then
+           rm -f /usr/bin/$tool /var/lib/alternatives/$tool \
+            && update-alternatives --install /usr/bin/$tool $tool $tool_path 20000;
+          fi;
         done
+
   pre_build:
     commands:
       - chmod +x gradlew
