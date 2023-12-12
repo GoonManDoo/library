@@ -2,6 +2,7 @@ package com.test.library.rent.dto;
 
 import com.test.library.book.entity.BookEntity;
 import com.test.library.rent.entity.RentEntity;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,12 +10,22 @@ import java.util.Date;
 
 @Data
 @Builder
+@Schema(description = "대출 정보 DTO")
 public class RentDTO {
 
+    @Schema(description = "대출 고유번호", example = "1")
     private Long rentUid;      // 대출 고유번호
+
+    @Schema(description = "대출일")
     private Date rentDate;    // 대출일
+
+    @Schema(description = "반납일")
     private Date returnDate;  // 반납일
+
+    @Schema(description = "책 고유번호", example = "1")
     private Long bookUid;       // 책 고유번호
+
+    @Schema(description = "사용자 고유번호", example = "1", hidden = true)
     private Long usersUid;      // 사용자 고유번호
 
     public RentDTO() {

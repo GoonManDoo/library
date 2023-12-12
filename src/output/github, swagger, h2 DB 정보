@@ -1,6 +1,13 @@
 1. github : https://github.com/GoonManDoo/library
-2. swagger : http://localhost:8088/swagger-ui/index.html
+2. swagger :
+    경로 : http://localhost:8088/swagger-ui/index.html
+    예제 데이터 : 등록 완료
 3. H2 DB :
     경로 : http://localhost:8088/h2-console
     ID : sa
     PW : sa
+    SELECT 쿼리문 :
+        SELECT * FROM BOOK;
+        SELECT * FROM USERS;
+        SELECT * FROM RENT;
+        SELECT * FROM RECORD;

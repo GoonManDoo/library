@@ -1,14 +1,23 @@
 package com.test.library.users.dto;
 
 import com.test.library.users.entity.UsersEntity;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
+@Schema(description = "사용자 정보 DTO")
 public class UsersDTO {
 
+    @Schema(description = "사용자 고유번호", example = "1")
     private Long usersUid; // 사용자 고유번호
+    
+    @Schema(description = "사용자 이름", example = "김영민")
     private String usersName; // 사용자 이름
+
+    @Schema(description = "사용자 아이디", example = "id")
     private String usersId; // 사용자 아이디
+
+    @Schema(description = "사용자 암호", example = "pw")
     private String usersPw; // 사용자 암호
 
     public UsersDTO() {

@@ -1,15 +1,24 @@
 package com.test.library.book.dto;
 
 import com.test.library.book.entity.BookEntity;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import lombok.Data;
 
 @Data
+@Schema(description = "책 정보 DTO")
 public class BookDTO {
 
+    @Schema(description = "책 고유번호", example = "1")
     private Long bookUid; // 책 고유번호
+
+    @Schema(description = "책 이름", example = "난중일기")
     private String bookName; // 책 이름
+
+    @Schema(description = "책 저자", example = "이순신")
     private String bookWriter; // 책 저자
+
+    @Schema(description = "책 고유번호", example = "false")
     private boolean bookState; // 대출 상태
 
     public BookDTO() {

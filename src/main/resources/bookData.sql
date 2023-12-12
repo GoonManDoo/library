@@ -1,1 +1,0 @@
-Insert into book (book_uid, book_name, book_writer) values (1, '누가내머리에똥쌌어', '김영민');
